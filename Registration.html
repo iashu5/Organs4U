@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organ Donor Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="Registration.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      
+      <div id="success-message" class="alert alert-success d-none text-center" role="alert">
+        Your registration was successful! Thank you for becoming an organ donor.
+      </div>
+
+      <h1 class="text-center gradient-text mb-4">Organ Donor Registration</h1>
+      <div class="card shadow">
+        <div class="row no-gutters">
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img
+              src="./assets/images/DonationImage.jpg"
+              alt="Organ Donation"
+              class="img-fluid rounded"
+              style="max-width: 100%; height: auto"
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <form action="/submit-registration" method="POST">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="full-name">Full Name</label>
+                    <input
+                      type="text"
+                      id="full-name"
+                      name="full-name"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="phone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="dob">Date of Birth</label>
+                    <input
+                      type="date"
+                      id="dob"
+                      name="dob"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="blood-type">Blood Type</label>
+                    <select
+                      id="blood-type"
+                      name="blood-type"
+                      class="form-control"
+                      required
+                    >
+                      <option value="">Select</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="organs">Organs to Donate</label>
+                    <select
+                      id="organs"
+                      name="organs"
+                      class="form-control"
+                      multiple
+                      required
+                    >
+                      <option value="kidney">Kidney</option>
+                      <option value="heart">Heart</option>
+                      <option value="liver">Liver</option>
+                      <option value="lungs">Lungs</option>
+                      <option value="pancreas">Pancreas</option>
+                      <option value="intestines">Intestines</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="consent"
+                    name="consent"
+                    required
+                  />
+                  <label class="form-check-label" for="consent"
+                    >I agree to donate my organs after my death</label
+                  >
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="submit" class="btn btn-primary">
+                    Register
+                  </button>
+
+                  <a href="/index.html" class="btn btn-secondary">Cancel</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+      document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault(); 
+
+        
+        const successMessage = document.getElementById('success-message');
+        successMessage.classList.remove('d-none'); 
+
+        
+        this.reset();
+
+        
+        setTimeout(function () {
+          window.location.href = 'index.html'; 
+        }, 3000); 
+      });
+    </script>
+  </body>
+</html>

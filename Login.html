@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Slider Section -->
+        <div class="slider">
+            <div class="slide" style="background-image: url('./assets/images/login-6.jpg');"></div>
+            <div class="slide" style="background-image: url('./assets/images/login-5.jpg');"></div>
+            <div class="slide" style="background-image: url('./assets/images/login-4.jpg');"></div>
+        </div>
+
+     
+        <div class="form-container">
+            <!-- Login Form -->
+            <div id="login-form" class="form-content">
+                <h2>USER LOGIN</h2>
+                <form id="login-form-action">
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/user.png" alt="User Icon">
+                        </div>
+                        <input type="text" id="login-username" placeholder="Username" required>
+                        <small id="login-username-error" style="color:red;"></small>
+                    </div>
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/lock-2.png" alt="Lock Icon">
+                        </div>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                        <small id="login-password-error" style="color:red;"></small>
+                    </div>
+                    <button type="submit">LOGIN</button>
+                    <div class="options">
+                        <a href="#" id="show-forgot-password" class="forgot-password">Forgot Password?</a>
+                        <a href="#" id="show-signup" class="signup">Don't have an account? Sign up</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" class="form-content" style="display: none;">
+                <h2>CREATE ACCOUNT</h2>
+                <form id="signup-form-action">
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/user.png" alt="User Icon">
+                        </div>
+                        <input type="text" id="signup-username" placeholder="Username" required>
+                        <small id="signup-username-error" style="color:red;"></small>
+                    </div>
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/lock-2.png" alt="Lock Icon">
+                        </div>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <small id="signup-password-error" style="color:red;"></small>
+                    </div>
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/lock-2.png" alt="Lock Icon">
+                        </div>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                        <small id="signup-confirm-password-error" style="color:red;"></small>
+                    </div>
+                    <button type="submit">SIGN UP</button>
+                    <div class="options">
+                        <a href="#" id="show-login" class="login">Already have an account? Login</a>
+                    </div>
+                </form>
+            </div>
+
+            
+            <div id="forgot-password-form" class="form-content" style="display: none;">
+                <h2>Reset Password</h2>
+                <form id="forgot-password-form-action">
+                    <div class="input-group">
+                        <div class="icon">
+                            <img src="https://img.icons8.com/ios-filled/50/91BE55/user.png" alt="User Icon">
+                        </div>
+                        <input type="email" id="forgot-email" placeholder="Enter your email" required>
+                        <small id="forgot-email-error" style="color:red;"></small>
+                    </div>
+                    <button type="submit">RESET PASSWORD</button>
+                    <div class="options">
+                        <a href="#" id="show-login-from-forgot" class="login">Back to Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      
+        document.getElementById('login-form-action').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let username = document.getElementById('login-username').value;
+            let password = document.getElementById('login-password').value;
+            let valid = true;
+
+          
+            document.getElementById('login-username-error').textContent = '';
+            document.getElementById('login-password-error').textContent = '';
+
+            if (username.trim() === '') {
+                document.getElementById('login-username-error').textContent = 'Username is required.';
+                valid = false;
+            }
+            if (password.trim() === '') {
+                document.getElementById('login-password-error').textContent = 'Password is required.';
+                valid = false;
+            }
+
+            if (valid) {
+               
+                alert('Login successful');
+            }
+        });
+
+        
+        document.getElementById('signup-form-action').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let username = document.getElementById('signup-username').value;
+            let password = document.getElementById('signup-password').value;
+            let confirmPassword = document.getElementById('signup-confirm-password').value;
+            let valid = true;
+
+            document.getElementById('signup-username-error').textContent = '';
+            document.getElementById('signup-password-error').textContent = '';
+            document.getElementById('signup-confirm-password-error').textContent = '';
+
+            if (username.trim() === '') {
+                document.getElementById('signup-username-error').textContent = 'Username is required.';
+                valid = false;
+            }
+            if (password.trim() === '') {
+                document.getElementById('signup-password-error').textContent = 'Password is required.';
+                valid = false;
+            }
+            if (password !== confirmPassword) {
+                document.getElementById('signup-confirm-password-error').textContent = 'Passwords do not match.';
+                valid = false;
+            }
+
+            if (valid) {
+               
+                alert('Signup successful');
+            }
+        });
+
+        
+        document.getElementById('forgot-password-form-action').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let email = document.getElementById('forgot-email').value;
+            let valid = true;
+
+            
+            document.getElementById('forgot-email-error').textContent = '';
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('forgot-email-error').textContent = 'Please enter a valid email address.';
+                valid = false;
+            }
+
+            if (valid) {
+                
+                alert('Password reset email sent');
+            }
+        });
+
+        
+        document.getElementById('show-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        });
+
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+
+        
+        document.getElementById('show-forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('forgot-password-form').style.display = 'block';
+        });
+
+        
+        document.getElementById('show-login-from-forgot').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('forgot-password-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

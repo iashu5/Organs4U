@@ -1,0 +1,33 @@
+body {
+  background-color: #f4f4f4;
+  font-family: "Poppins", sans-serif; 
+}
+
+.gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #4caf50,
+    #2196f3
+  ); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.btn-primary {
+  background-color: #91be55;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #7dae48; 
+}
